@@ -8,12 +8,20 @@ public class Fibonacci {
   private static final int MAX_POSITION = 50;
 
   public long calculate(int position) {
-    if (position < MIN_POSITION || position > MAX_POSITION) {
+    if (isPositionOutOfBounds(position)) {
       throw new OutOfPositionException();
     }
-    if (position == 1 || position == 2) {
+    if (isFirstOrSecondPosition(position)) {
       return 1;
     }
     return calculate(position - 2) + calculate(position - 1);
+  }
+
+  private boolean isPositionOutOfBounds(int position) {
+    return position < MIN_POSITION || position > MAX_POSITION;
+  }
+
+  private boolean isFirstOrSecondPosition(int position) {
+    return position == 1 || position == 2;
   }
 }
