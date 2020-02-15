@@ -5,12 +5,12 @@ import java.util.List;
 public class Order {
     private String customerName;
     private String customerAddress;
-    private List<LineItem> lineItemList;
+    private List<LineItem> lineItems;
 
-    public Order(String customerName, String customerAddress, List<LineItem> lineItemList) {
+    public Order(String customerName, String customerAddress, List<LineItem> lineItems) {
         this.customerName = customerName;
         this.customerAddress = customerAddress;
-        this.lineItemList = lineItemList;
+        this.lineItems = lineItems;
     }
 
     public String getCustomerName() {
@@ -22,10 +22,10 @@ public class Order {
     }
 
     public List<LineItem> getLineItems() {
-        return lineItemList;
+        return lineItems;
     }
 
     public double getTotalSalesTax() {
-        return lineItemList.stream().mapToDouble(lineItem -> lineItem.totalAmount() * .10).sum();
+        return lineItems.stream().mapToDouble(lineItem -> lineItem.totalAmount() * .10).sum();
     }
 }
