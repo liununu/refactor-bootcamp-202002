@@ -35,12 +35,15 @@ public class OrderReceipt {
             tot += lineItem.totalAmount() + salesTax;
         }
 
-        // prints the state tax
-        output.append("Sales Tax").append('\t').append(totSalesTx);
+        printSalesTax(output, totSalesTx);
 
         // print total amount
         output.append("Total Amount").append('\t').append(tot);
         return output.toString();
+    }
+
+    private void printSalesTax(StringBuilder output, double totSalesTx) {
+        output.append("Sales Tax").append('\t').append(totSalesTx);
     }
 
     private void printCustomerInfo(StringBuilder output) {
