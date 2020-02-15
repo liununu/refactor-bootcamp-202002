@@ -34,4 +34,11 @@ class FibonacciTest {
 
     assertThat(result).isEqualTo(3);
   }
+
+  @Test
+  void should_return_12586269025_when_calculate_given_position_is_50() {
+    long result = fibonacci.calculate(50);
+
+    assertThat(result).isEqualTo(12586269025L);
+  }
 }
