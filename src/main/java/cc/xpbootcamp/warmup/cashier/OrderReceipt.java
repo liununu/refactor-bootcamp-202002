@@ -5,9 +5,9 @@ package cc.xpbootcamp.warmup.cashier;
  * price and amount. It also calculates the sales tax @ 10% and prints as part
  * of order. It computes the total order amount (amount of individual lineItems +
  * total sales tax) and prints it.
- *
  */
 public class OrderReceipt {
+    private static final String ORDERS_HEADERS = "======Printing Orders======\n";
     private Order order;
 
     public OrderReceipt(Order order) {
@@ -17,8 +17,7 @@ public class OrderReceipt {
     public String printReceipt() {
         StringBuilder output = new StringBuilder();
 
-        // print headers
-        output.append("======Printing Orders======\n");
+        printHeaders(output);
 
         // print date, bill no, customer name
 //        output.append("Date - " + order.getDate();
@@ -53,5 +52,9 @@ public class OrderReceipt {
         // print total amount
         output.append("Total Amount").append('\t').append(tot);
         return output.toString();
+    }
+
+    private void printHeaders(StringBuilder output) {
+        output.append(ORDERS_HEADERS);
     }
 }
