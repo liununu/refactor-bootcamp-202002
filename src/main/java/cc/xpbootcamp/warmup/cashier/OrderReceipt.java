@@ -8,6 +8,8 @@ package cc.xpbootcamp.warmup.cashier;
  */
 public class OrderReceipt {
     private static final String ORDERS_HEADERS = "======Printing Orders======\n";
+    private static final String TOTAL_AMOUNT_TITLE = "Total Amount\t";
+    private static final String SALES_TAX_TITLE = "Sales Tax\t";
     private Order order;
 
     public OrderReceipt(Order order) {
@@ -37,11 +39,11 @@ public class OrderReceipt {
     }
 
     private void printTotalAmount(StringBuilder output) {
-        output.append("Total Amount").append('\t').append(order.getTotalAmount());
+        output.append(TOTAL_AMOUNT_TITLE).append(order.getTotalAmount());
     }
 
     private void printSalesTax(StringBuilder output) {
-        output.append("Sales Tax").append('\t').append(order.getTotalSalesTax());
+        output.append(SALES_TAX_TITLE).append(order.getTotalSalesTax());
     }
 
     private void printCustomerInfo(StringBuilder output) {
