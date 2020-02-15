@@ -23,9 +23,9 @@ public class OrderReceipt {
 
         printLineItems(output);
 
-        printSalesTax(output, order.getTotalSalesTax());
+        printSalesTax(output);
 
-        printTotalAmount(output, order.getTotalAmount());
+        printTotalAmount(output);
 
         return output.toString();
     }
@@ -36,12 +36,12 @@ public class OrderReceipt {
         }
     }
 
-    private void printTotalAmount(StringBuilder output, double tot) {
-        output.append("Total Amount").append('\t').append(tot);
+    private void printTotalAmount(StringBuilder output) {
+        output.append("Total Amount").append('\t').append(order.getTotalAmount());
     }
 
-    private void printSalesTax(StringBuilder output, double totSalesTx) {
-        output.append("Sales Tax").append('\t').append(totSalesTx);
+    private void printSalesTax(StringBuilder output) {
+        output.append("Sales Tax").append('\t').append(order.getTotalSalesTax());
     }
 
     private void printCustomerInfo(StringBuilder output) {
