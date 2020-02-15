@@ -3,9 +3,9 @@ package cc.xpbootcamp.warmup.cashier;
 import java.util.List;
 
 public class Order {
-   private String customerName;
-   private String customerAddress;
-   private List<LineItem> lineItemList;
+    private String customerName;
+    private String customerAddress;
+    private List<LineItem> lineItemList;
 
     public Order(String customerName, String customerAddress, List<LineItem> lineItemList) {
         this.customerName = customerName;
@@ -23,5 +23,9 @@ public class Order {
 
     public List<LineItem> getLineItems() {
         return lineItemList;
+    }
+
+    public double getTotalSalesTax() {
+        return lineItemList.stream().mapToDouble(lineItem -> lineItem.totalAmount() * .10).sum();
     }
 }
