@@ -3,7 +3,7 @@ package cc.xpbootcamp.warmup.fibonacci;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
-import cc.xpbootcamp.warmup.fibonacci.exception.OutOfPositionException;
+import cc.xpbootcamp.warmup.fibonacci.exception.PositionOutOfBoundsException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -48,17 +48,17 @@ class FibonacciTest {
 
   @ParameterizedTest
   @ValueSource(ints = {51, 100, 300})
-  void should_throw_out_of_position_exception_when_calculate_given_position_is_over_50(
+  void should_throw_position_out_of_bounds_exception_when_calculate_given_position_is_over_50(
       int over50Position) {
-    assertThatExceptionOfType(OutOfPositionException.class)
+    assertThatExceptionOfType(PositionOutOfBoundsException.class)
         .isThrownBy(() -> fibonacci.calculate(over50Position));
   }
 
   @ParameterizedTest
   @ValueSource(ints = {0, -50, -100})
-  void should_throw_out_of_position_exception_when_calculate_given_position_is_below_1(
+  void should_throw_position_out_of_bounds_exception_when_calculate_given_position_is_below_1(
       int below1Position) {
-    assertThatExceptionOfType(OutOfPositionException.class)
+    assertThatExceptionOfType(PositionOutOfBoundsException.class)
         .isThrownBy(() -> fibonacci.calculate(below1Position));
   }
 }

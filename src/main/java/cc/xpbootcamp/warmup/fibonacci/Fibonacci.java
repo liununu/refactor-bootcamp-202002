@@ -1,6 +1,6 @@
 package cc.xpbootcamp.warmup.fibonacci;
 
-import cc.xpbootcamp.warmup.fibonacci.exception.OutOfPositionException;
+import cc.xpbootcamp.warmup.fibonacci.exception.PositionOutOfBoundsException;
 
 public class Fibonacci {
 
@@ -9,7 +9,7 @@ public class Fibonacci {
 
   public long calculate(int position) {
     if (isPositionOutOfBounds(position)) {
-      throw new OutOfPositionException();
+      throw new PositionOutOfBoundsException();
     }
     if (isFirstOrSecondPosition(position)) {
       return 1;
