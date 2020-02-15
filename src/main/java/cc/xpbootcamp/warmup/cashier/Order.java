@@ -3,9 +3,9 @@ package cc.xpbootcamp.warmup.cashier;
 import java.util.List;
 
 public class Order {
-    String customerName;
-    String customerAddress;
-    List<LineItem> lineItemList;
+   private String customerName;
+   private String customerAddress;
+   private List<LineItem> lineItemList;
 
     public Order(String customerName, String customerAddress, List<LineItem> lineItemList) {
         this.customerName = customerName;
