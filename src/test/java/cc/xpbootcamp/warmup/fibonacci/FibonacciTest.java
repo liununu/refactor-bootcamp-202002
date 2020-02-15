@@ -53,4 +53,12 @@ class FibonacciTest {
     assertThatExceptionOfType(OutOfPositionException.class)
         .isThrownBy(() -> fibonacci.calculate(over50Position));
   }
+
+  @ParameterizedTest
+  @ValueSource(ints = {0, -50, -100})
+  void should_throw_out_of_position_exception_when_calculate_given_position_is_below_1(
+      int below1Position) {
+    assertThatExceptionOfType(OutOfPositionException.class)
+        .isThrownBy(() -> fibonacci.calculate(below1Position));
+  }
 }
