@@ -1,6 +1,7 @@
 package cc.xpbootcamp.warmup.cashier;
 
 public class LineItem {
+    private static final double TAX_RATE = .10;
     private String description;
     private double price;
     private int quantity;
@@ -26,6 +27,10 @@ public class LineItem {
 
     double totalAmount() {
         return price * quantity;
+    }
+
+    double totalSalesTax() {
+        return totalAmount() * TAX_RATE;
     }
 
     @Override
