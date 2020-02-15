@@ -6,9 +6,6 @@ public class Fibonacci {
     if (position == 1 || position == 2) {
       return 1;
     }
-    if (position == 3) {
-      return calculate(1) + calculate(2);
-    }
-    return 0;
+    return calculate(position - 2) + calculate(position - 1);
   }
 }

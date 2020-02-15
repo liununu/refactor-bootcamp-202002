@@ -27,4 +27,11 @@ class FibonacciTest {
 
     assertThat(result).isEqualTo(2);
   }
+
+  @Test
+  void should_return_3_when_calculate_given_position_is_4() {
+    long result = fibonacci.calculate(4);
+
+    assertThat(result).isEqualTo(3);
+  }
 }
