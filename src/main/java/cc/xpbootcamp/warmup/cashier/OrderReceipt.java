@@ -20,7 +20,6 @@ public class OrderReceipt {
         printHeaders(output);
 
         printCustomerInfo(output);
-//        output.append(order.getCustomerLoyaltyNumber());
 
         // prints lineItems
         double totSalesTx = 0d;
