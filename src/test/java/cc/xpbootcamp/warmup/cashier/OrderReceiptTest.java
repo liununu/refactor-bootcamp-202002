@@ -2,8 +2,11 @@ package cc.xpbootcamp.warmup.cashier;
 
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import static java.util.Collections.emptyList;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -47,5 +50,15 @@ class OrderReceiptTest {
         String output = receipt.printReceipt();
 
         assertThat(output, containsString("===== 老王超市,值得信赖 ======\n"));
+    }
+
+    @Test
+    void shouldPrintTodayDateInfo() {
+        OrderReceipt receipt = new OrderReceipt(new Order(null, null, emptyList()));
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy年M月dd日,E", Locale.CHINA);
+
+        String output = receipt.printReceipt();
+
+        assertThat(output, containsString(String.format("%s\n", LocalDateTime.now().format(formatter))));
     }
 }
