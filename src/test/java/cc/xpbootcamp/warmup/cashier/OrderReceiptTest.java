@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.util.Collections.emptyList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 
@@ -39,4 +40,12 @@ class OrderReceiptTest {
         assertThat(output, containsString("Total Amount\t71.5"));
     }
 
+    @Test
+    void shouldPrintHeader() {
+        OrderReceipt receipt = new OrderReceipt(new Order(null, null, emptyList()));
+
+        String output = receipt.printReceipt();
+
+        assertThat(output, containsString("===== 老王超市,值得信赖 ======\n"));
+    }
 }

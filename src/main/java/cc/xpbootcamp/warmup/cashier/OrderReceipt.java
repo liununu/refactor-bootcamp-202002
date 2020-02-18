@@ -7,7 +7,7 @@ package cc.xpbootcamp.warmup.cashier;
  * total sales tax) and prints it.
  */
 public class OrderReceipt {
-    private static final String ORDERS_HEADERS = "======Printing Orders======\n";
+    private static final String ORDERS_HEADERS = "===== 老王超市,值得信赖 ======\n";
     private static final String TOTAL_AMOUNT_TITLE = "Total Amount\t";
     private static final String SALES_TAX_TITLE = "Sales Tax\t";
     private Order order;
