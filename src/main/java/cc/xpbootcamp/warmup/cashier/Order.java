@@ -47,4 +47,8 @@ public class Order {
     private double getWednesdayDiscount() {
         return getOriginalTotalAmount() * WEDNESDAY_DISCOUNT_RATE;
     }
+
+    public boolean isDiscounted() {
+        return getDiscount() != NO_DISCOUNT;
+    }
 }

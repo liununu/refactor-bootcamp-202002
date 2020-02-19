@@ -6,8 +6,6 @@ import static cc.xpbootcamp.warmup.cashier.constant.OrderReceiptStyleConstant.*;
 
 public class OrderReceipt {
 
-    private static final int NO_DISCOUNT = 0;
-
     private Order order;
 
     public OrderReceipt(Order order) {
@@ -40,11 +38,9 @@ public class OrderReceipt {
     }
 
     private void printTotalDiscount(StringBuilder output) {
-        double discount = order.getDiscount();
-        if (discount == NO_DISCOUNT) {
-            return;
+        if (order.isDiscounted()) {
+            output.append(String.format(TOTAL_DISCOUNT_FORMATTER, order.getDiscount()));
         }
-        output.append(String.format(TOTAL_DISCOUNT_FORMATTER, discount));
     }
 
     private void printTotalAmount(StringBuilder output) {
