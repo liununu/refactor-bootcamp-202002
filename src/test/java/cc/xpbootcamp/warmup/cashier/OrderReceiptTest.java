@@ -8,11 +8,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import static cc.xpbootcamp.warmup.cashier.MockLocalDateTime.mockNotWednesday;
+import static cc.xpbootcamp.warmup.cashier.MockLocalDateTime.resetMockDate;
 import static java.util.Arrays.asList;
 import static java.util.Collections.emptyList;
 import static java.util.Collections.singletonList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.not;
 
 class OrderReceiptTest {
 
@@ -121,7 +124,8 @@ class OrderReceiptTest {
     }
 
     @Test
-    void shouldPrintTotalAmount() {
+    void shouldPrintTotalAmountWithoutDiscountWhenNotWednesday() {
+        mockNotWednesday();
         OrderReceipt receipt = new OrderReceipt(
                 new Order(
                         asList(new LineItem("巧克力", 21.50, 2),
@@ -130,6 +134,8 @@ class OrderReceiptTest {
 
         String output = receipt.printReceipt();
 
+        assertThat(output, not(containsString("折扣: 1.17\n")));
         assertThat(output, containsString("总价: 58.30\n"));
+        resetMockDate();
     }
 }
