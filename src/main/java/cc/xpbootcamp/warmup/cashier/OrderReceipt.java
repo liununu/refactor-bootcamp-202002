@@ -4,8 +4,6 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
-import static java.time.DayOfWeek.WEDNESDAY;
-
 public class OrderReceipt {
     private static final String ORDERS_HEADERS = "===== 老王超市,值得信赖 ======\n";
     private static final DateTimeFormatter TODAY_DATE_FORMATTER =
@@ -15,6 +13,7 @@ public class OrderReceipt {
     private static final String TOTAL_DISCOUNT_FORMATTER = "折扣: %.2f\n";
     private static final String BLANK_LINE_SPACING = "\n";
     private static final String HYPHEN_LINE_SPACING = "-----------------------------------\n";
+    private static final int NO_DISCOUNT = 0;
 
     private Order order;
 
@@ -48,9 +47,11 @@ public class OrderReceipt {
     }
 
     private void printTotalDiscount(StringBuilder output) {
-        if (LocalDateTime.now().getDayOfWeek() == WEDNESDAY) {
-            output.append(String.format(TOTAL_DISCOUNT_FORMATTER, order.getWednesdayDiscount()));
+        double discount = order.getDiscount();
+        if (discount == NO_DISCOUNT) {
+            return;
         }
+        output.append(String.format(TOTAL_DISCOUNT_FORMATTER, discount));
     }
 
     private void printTotalAmount(StringBuilder output) {

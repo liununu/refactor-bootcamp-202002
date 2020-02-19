@@ -7,6 +7,7 @@ import static java.time.DayOfWeek.WEDNESDAY;
 
 public class Order {
     private static final double WEDNESDAY_DISCOUNT_RATE = .02;
+    private static final int NO_DISCOUNT = 0;
     private List<LineItem> lineItems;
 
     public Order(List<LineItem> lineItems) {
@@ -37,7 +38,13 @@ public class Order {
         return getOriginalTotalAmount() - getWednesdayDiscount();
     }
 
-    public double getWednesdayDiscount() {
+    public double getDiscount() {
+        return LocalDateTime.now().getDayOfWeek() == WEDNESDAY
+                ? getWednesdayDiscount()
+                : NO_DISCOUNT;
+    }
+
+    private double getWednesdayDiscount() {
         return getOriginalTotalAmount() * WEDNESDAY_DISCOUNT_RATE;
     }
 }
