@@ -9,7 +9,7 @@ public class OrderReceipt {
     private static final DateTimeFormatter TODAY_DATE_FORMATTER =
             DateTimeFormatter.ofPattern("yyyy年M月dd日,E\n", Locale.CHINA);
     private static final String TOTAL_AMOUNT_TITLE = "Total Amount\t";
-    private static final String SALES_TAX_TITLE = "Sales Tax\t";
+    private static final String TOTAL_SALES_TAX_FORMATTER = "税额: %.2f\n";
     private static final String BLANK_LINE_SPACING = "\n";
     private Order order;
 
@@ -26,7 +26,7 @@ public class OrderReceipt {
 
         printLineItems(output);
 
-        printSalesTax(output);
+        printTotalSalesTax(output);
 
         printTotalAmount(output);
 
@@ -43,8 +43,8 @@ public class OrderReceipt {
         output.append(TOTAL_AMOUNT_TITLE).append(order.getTotalAmount());
     }
 
-    private void printSalesTax(StringBuilder output) {
-        output.append(SALES_TAX_TITLE).append(order.getTotalSalesTax());
+    private void printTotalSalesTax(StringBuilder output) {
+        output.append(String.format(TOTAL_SALES_TAX_FORMATTER, order.getTotalSalesTax()));
     }
 
     private void printTodayDateInfo(StringBuilder output) {
