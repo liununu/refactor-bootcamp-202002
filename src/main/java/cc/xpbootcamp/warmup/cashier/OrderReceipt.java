@@ -8,7 +8,7 @@ public class OrderReceipt {
     private static final String ORDERS_HEADERS = "===== 老王超市,值得信赖 ======\n";
     private static final DateTimeFormatter TODAY_DATE_FORMATTER =
             DateTimeFormatter.ofPattern("yyyy年M月dd日,E\n", Locale.CHINA);
-    private static final String TOTAL_AMOUNT_TITLE = "Total Amount\t";
+    private static final String TOTAL_AMOUNT_FORMATTER = "总价: %.2f\n";
     private static final String TOTAL_SALES_TAX_FORMATTER = "税额: %.2f\n";
     private static final String BLANK_LINE_SPACING = "\n";
     private static final String HYPHEN_LINE_SPACING = "-----------------------------------\n";
@@ -43,7 +43,7 @@ public class OrderReceipt {
     }
 
     private void printTotalAmount(StringBuilder output) {
-        output.append(TOTAL_AMOUNT_TITLE).append(order.getTotalAmount());
+        output.append(String.format(TOTAL_AMOUNT_FORMATTER, order.getTotalAmount()));
     }
 
     private void printTotalSalesTax(StringBuilder output) {

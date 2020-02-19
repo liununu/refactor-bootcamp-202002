@@ -119,4 +119,17 @@ class OrderReceiptTest {
                 )
         );
     }
+
+    @Test
+    void shouldPrintTotalAmount() {
+        OrderReceipt receipt = new OrderReceipt(
+                new Order(
+                        asList(new LineItem("巧克力", 21.50, 2),
+                                new LineItem("小白菜", 10.00, 1)))
+        );
+
+        String output = receipt.printReceipt();
+
+        assertThat(output, containsString("总价: 58.30\n"));
+    }
 }
