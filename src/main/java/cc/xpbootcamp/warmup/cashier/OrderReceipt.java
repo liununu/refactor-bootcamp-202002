@@ -4,12 +4,15 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
+import static java.time.DayOfWeek.WEDNESDAY;
+
 public class OrderReceipt {
     private static final String ORDERS_HEADERS = "===== 老王超市,值得信赖 ======\n";
     private static final DateTimeFormatter TODAY_DATE_FORMATTER =
             DateTimeFormatter.ofPattern("yyyy年M月dd日,E\n", Locale.CHINA);
     private static final String TOTAL_AMOUNT_FORMATTER = "总价: %.2f\n";
     private static final String TOTAL_SALES_TAX_FORMATTER = "税额: %.2f\n";
+    private static final String TOTAL_DISCOUNT_FORMATTER = "折扣: %.2f\n";
     private static final String BLANK_LINE_SPACING = "\n";
     private static final String HYPHEN_LINE_SPACING = "-----------------------------------\n";
 
@@ -30,6 +33,8 @@ public class OrderReceipt {
 
         printTotalSalesTax(output);
 
+        printTotalDiscount(output);
+
         printTotalAmount(output);
 
         return output.toString();
@@ -42,8 +47,18 @@ public class OrderReceipt {
         output.append(HYPHEN_LINE_SPACING);
     }
 
+    private void printTotalDiscount(StringBuilder output) {
+        if (LocalDateTime.now().getDayOfWeek() == WEDNESDAY) {
+            output.append(String.format(TOTAL_DISCOUNT_FORMATTER, order.getWednesdayDiscount()));
+        }
+    }
+
     private void printTotalAmount(StringBuilder output) {
-        output.append(String.format(TOTAL_AMOUNT_FORMATTER, order.getTotalAmount()));
+        if (LocalDateTime.now().getDayOfWeek() == WEDNESDAY) {
+            output.append(String.format(TOTAL_AMOUNT_FORMATTER, order.getTotalAmount() - order.getWednesdayDiscount()));
+        } else {
+            output.append(String.format(TOTAL_AMOUNT_FORMATTER, order.getTotalAmount()));
+        }
     }
 
     private void printTotalSalesTax(StringBuilder output) {

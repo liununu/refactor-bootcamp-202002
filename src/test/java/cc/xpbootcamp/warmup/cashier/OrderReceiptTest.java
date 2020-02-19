@@ -8,8 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-import static cc.xpbootcamp.warmup.cashier.MockLocalDateTime.mockNotWednesday;
-import static cc.xpbootcamp.warmup.cashier.MockLocalDateTime.resetMockDate;
+import static cc.xpbootcamp.warmup.cashier.MockLocalDateTime.*;
 import static java.util.Arrays.asList;
 import static java.util.Collections.emptyList;
 import static java.util.Collections.singletonList;
@@ -136,6 +135,22 @@ class OrderReceiptTest {
 
         assertThat(output, not(containsString("折扣: 1.17\n")));
         assertThat(output, containsString("总价: 58.30\n"));
+        resetMockDate();
+    }
+
+    @Test
+    void shouldPrintTotalAmountWithDiscountWhenWednesday() {
+        mockWednesday();
+        OrderReceipt receipt = new OrderReceipt(
+                new Order(
+                        asList(new LineItem("巧克力", 21.50, 2),
+                                new LineItem("小白菜", 10.00, 1)))
+        );
+
+        String output = receipt.printReceipt();
+
+        assertThat(output, containsString("折扣: 1.17\n"));
+        assertThat(output, containsString("总价: 57.13\n"));
         resetMockDate();
     }
 }

@@ -3,6 +3,7 @@ package cc.xpbootcamp.warmup.cashier;
 import java.util.List;
 
 public class Order {
+    private static final double WEDNESDAY_DISCOUNT_RATE = .02;
     private List<LineItem> lineItems;
 
     public Order(List<LineItem> lineItems) {
@@ -21,5 +22,9 @@ public class Order {
         return lineItems.stream()
                 .mapToDouble(lineItem -> lineItem.calculateTotalAmount() + lineItem.calculateTotalSalesTax())
                 .sum();
+    }
+
+    public double getWednesdayDiscount() {
+        return getTotalAmount() * WEDNESDAY_DISCOUNT_RATE;
     }
 }
