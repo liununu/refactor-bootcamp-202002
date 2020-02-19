@@ -10,6 +10,7 @@ public class OrderReceipt {
             DateTimeFormatter.ofPattern("yyyy年M月dd日,E\n", Locale.CHINA);
     private static final String TOTAL_AMOUNT_TITLE = "Total Amount\t";
     private static final String SALES_TAX_TITLE = "Sales Tax\t";
+    private static final String BLANK_LINE_SPACING = "\n";
     private Order order;
 
     public OrderReceipt(Order order) {
@@ -51,6 +52,6 @@ public class OrderReceipt {
     }
 
     private void printHeaders(StringBuilder output) {
-        output.append(ORDERS_HEADERS);
+        output.append(ORDERS_HEADERS).append(BLANK_LINE_SPACING);
     }
 }

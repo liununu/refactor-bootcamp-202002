@@ -50,4 +50,21 @@ class OrderReceiptTest {
 
         assertThat(output, containsString(String.format("%s\n", LocalDateTime.now().format(formatter))));
     }
+
+    @Test
+    void shouldPrintBlankLineSpacingBetweenHeaderAndTodayDateInfo() {
+        OrderReceipt receipt = new OrderReceipt(new Order(emptyList()));
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy年M月dd日,E", Locale.CHINA);
+
+        String output = receipt.printReceipt();
+
+        assertThat(output,
+                containsString(
+                        "===== 老王超市,值得信赖 ======\n"
+                                + "\n"
+                                + String.format("%s\n", now.format(formatter))
+                )
+        );
+    }
 }
