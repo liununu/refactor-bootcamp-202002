@@ -11,6 +11,8 @@ public class OrderReceipt {
     private static final String TOTAL_AMOUNT_TITLE = "Total Amount\t";
     private static final String TOTAL_SALES_TAX_FORMATTER = "税额: %.2f\n";
     private static final String BLANK_LINE_SPACING = "\n";
+    private static final String HYPHEN_LINE_SPACING = "-----------------------------------\n";
+
     private Order order;
 
     public OrderReceipt(Order order) {
@@ -37,6 +39,7 @@ public class OrderReceipt {
         for (LineItem lineItem : order.getLineItems()) {
             output.append(lineItem);
         }
+        output.append(HYPHEN_LINE_SPACING);
     }
 
     private void printTotalAmount(StringBuilder output) {
