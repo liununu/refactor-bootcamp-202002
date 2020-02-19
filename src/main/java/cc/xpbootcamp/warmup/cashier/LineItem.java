@@ -14,16 +14,16 @@ public class LineItem {
         this.quantity = quantity;
     }
 
-    double totalAmount() {
+    double calculateTotalAmount() {
         return price * quantity;
     }
 
-    double totalSalesTax() {
-        return totalAmount() * TAX_RATE;
+    double calculateTotalSalesTax() {
+        return calculateTotalAmount() * TAX_RATE;
     }
 
     @Override
     public String toString() {
-        return String.format(PRINT_FORMATTER, description, price, quantity, totalAmount());
+        return String.format(PRINT_FORMATTER, description, price, quantity, calculateTotalAmount());
     }
 }
