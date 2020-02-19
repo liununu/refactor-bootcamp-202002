@@ -54,11 +54,7 @@ public class OrderReceipt {
     }
 
     private void printTotalAmount(StringBuilder output) {
-        if (LocalDateTime.now().getDayOfWeek() == WEDNESDAY) {
-            output.append(String.format(TOTAL_AMOUNT_FORMATTER, order.getTotalAmount() - order.getWednesdayDiscount()));
-        } else {
-            output.append(String.format(TOTAL_AMOUNT_FORMATTER, order.getTotalAmount()));
-        }
+        output.append(String.format(TOTAL_AMOUNT_FORMATTER, order.getTotalAmount()));
     }
 
     private void printTotalSalesTax(StringBuilder output) {

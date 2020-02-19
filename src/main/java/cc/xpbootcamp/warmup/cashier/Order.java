@@ -1,6 +1,9 @@
 package cc.xpbootcamp.warmup.cashier;
 
+import java.time.LocalDateTime;
 import java.util.List;
+
+import static java.time.DayOfWeek.WEDNESDAY;
 
 public class Order {
     private static final double WEDNESDAY_DISCOUNT_RATE = .02;
@@ -19,12 +22,22 @@ public class Order {
     }
 
     public double getTotalAmount() {
+        return LocalDateTime.now().getDayOfWeek() == WEDNESDAY
+                ? getWednesdayTotalAmount()
+                : getOriginalTotalAmount();
+    }
+
+    private double getOriginalTotalAmount() {
         return lineItems.stream()
                 .mapToDouble(lineItem -> lineItem.calculateTotalAmount() + lineItem.calculateTotalSalesTax())
                 .sum();
     }
 
+    private double getWednesdayTotalAmount() {
+        return getOriginalTotalAmount() - getWednesdayDiscount();
+    }
+
     public double getWednesdayDiscount() {
-        return getTotalAmount() * WEDNESDAY_DISCOUNT_RATE;
+        return getOriginalTotalAmount() * WEDNESDAY_DISCOUNT_RATE;
     }
 }
