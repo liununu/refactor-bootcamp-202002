@@ -1,9 +1,10 @@
 package cc.xpbootcamp.warmup.cashier;
 
+import static cc.xpbootcamp.warmup.cashier.constant.CalculateRateConstant.TAX_RATE;
 import static cc.xpbootcamp.warmup.cashier.constant.OrderReceiptStyleConstant.LINE_ITEM_FORMATTER;
 
 public class LineItem {
-    private static final double TAX_RATE = .10;
+
     private String description;
     private double price;
     private int quantity;

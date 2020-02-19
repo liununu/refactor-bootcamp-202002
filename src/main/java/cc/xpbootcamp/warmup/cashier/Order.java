@@ -3,10 +3,10 @@ package cc.xpbootcamp.warmup.cashier;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import static cc.xpbootcamp.warmup.cashier.constant.CalculateRateConstant.WEDNESDAY_DISCOUNT_RATE;
 import static java.time.DayOfWeek.WEDNESDAY;
 
 public class Order {
-    private static final double WEDNESDAY_DISCOUNT_RATE = .02;
     private static final int NO_DISCOUNT = 0;
     private List<LineItem> lineItems;
 
