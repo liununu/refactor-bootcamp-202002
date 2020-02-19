@@ -2,6 +2,7 @@ package cc.xpbootcamp.warmup.cashier;
 
 public class LineItem {
     private static final double TAX_RATE = .10;
+    private static final String PRINT_FORMATTER = "%s, %.2f x %d, %.2f\n";
     private String description;
     private double price;
     private int quantity;
@@ -23,9 +24,6 @@ public class LineItem {
 
     @Override
     public String toString() {
-        return description + "\t"
-                + price + "\t"
-                + quantity + "\t"
-                + totalAmount() + "\n";
+        return String.format(PRINT_FORMATTER, description, price, quantity, totalAmount());
     }
 }
