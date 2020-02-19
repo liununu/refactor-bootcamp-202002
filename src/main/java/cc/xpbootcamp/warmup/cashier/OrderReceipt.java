@@ -2,7 +2,7 @@ package cc.xpbootcamp.warmup.cashier;
 
 import java.time.LocalDateTime;
 
-import static cc.xpbootcamp.warmup.cashier.OrderReceiptStyleConstant.*;
+import static cc.xpbootcamp.warmup.cashier.constant.OrderReceiptStyleConstant.*;
 
 public class OrderReceipt {
 

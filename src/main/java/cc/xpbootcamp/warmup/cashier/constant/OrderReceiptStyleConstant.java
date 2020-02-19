@@ -1,4 +1,4 @@
-package cc.xpbootcamp.warmup.cashier;
+package cc.xpbootcamp.warmup.cashier.constant;
 
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
