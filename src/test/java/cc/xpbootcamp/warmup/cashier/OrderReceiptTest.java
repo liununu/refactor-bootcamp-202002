@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Locale;
 
 import static java.util.Collections.emptyList;
+import static java.util.Collections.singletonList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 
@@ -62,6 +63,25 @@ class OrderReceiptTest {
                         "===== 老王超市,值得信赖 ======\n"
                                 + "\n"
                                 + String.format("%s\n", now.format(formatter))
+                )
+        );
+    }
+
+    @Test
+    void shouldPrintBlankLineSpacingBetweenTodayDateInfoAndListItemInfo() {
+        OrderReceipt receipt = new OrderReceipt(
+                new Order(singletonList(new LineItem("巧克力", 21.50, 2)))
+        );
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy年M月dd日,E", Locale.CHINA);
+
+        String output = receipt.printReceipt();
+
+        assertThat(output,
+                containsString(
+                        String.format("%s\n", now.format(formatter))
+                                + "\n"
+                                + "巧克力, 21.50 x 2, 43.00\n"
                 )
         );
     }

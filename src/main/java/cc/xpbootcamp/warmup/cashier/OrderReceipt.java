@@ -48,7 +48,7 @@ public class OrderReceipt {
     }
 
     private void printTodayDateInfo(StringBuilder output) {
-        output.append(LocalDateTime.now().format(TODAY_DATE_FORMATTER));
+        output.append(LocalDateTime.now().format(TODAY_DATE_FORMATTER)).append(BLANK_LINE_SPACING);
     }
 
     private void printHeaders(StringBuilder output) {
