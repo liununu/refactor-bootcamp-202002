@@ -23,9 +23,7 @@ public class Order {
     }
 
     public double getTotalAmount() {
-        return LocalDateTime.now().getDayOfWeek() == WEDNESDAY
-                ? getWednesdayTotalAmount()
-                : getOriginalTotalAmount();
+        return isTodayWednesday() ? getWednesdayTotalAmount() : getOriginalTotalAmount();
     }
 
     private double getOriginalTotalAmount() {
@@ -39,9 +37,7 @@ public class Order {
     }
 
     public double getDiscount() {
-        return LocalDateTime.now().getDayOfWeek() == WEDNESDAY
-                ? getWednesdayDiscount()
-                : NO_DISCOUNT;
+        return isTodayWednesday() ? getWednesdayDiscount() : NO_DISCOUNT;
     }
 
     private double getWednesdayDiscount() {
@@ -50,5 +46,9 @@ public class Order {
 
     public boolean isDiscounted() {
         return getDiscount() != NO_DISCOUNT;
+    }
+
+    private boolean isTodayWednesday() {
+        return LocalDateTime.now().getDayOfWeek() == WEDNESDAY;
     }
 }
