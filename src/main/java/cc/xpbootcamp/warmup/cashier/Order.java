@@ -7,6 +7,7 @@ import static cc.xpbootcamp.warmup.cashier.constant.CalculateRateConstant.WEDNES
 import static java.time.DayOfWeek.WEDNESDAY;
 
 public class Order {
+
     private static final int NO_DISCOUNT = 0;
     private List<LineItem> lineItems;
 
