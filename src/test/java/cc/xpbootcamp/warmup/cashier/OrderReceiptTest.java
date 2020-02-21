@@ -19,7 +19,7 @@ import static org.hamcrest.Matchers.not;
 class OrderReceiptTest {
 
     @Test
-    public void shouldPrintLineItemInfo() {
+    void shouldPrintLineItemInfo() {
         List<LineItem> lineItems = new ArrayList<LineItem>() {{
             add(new LineItem("milk", 10.00, 2));
             add(new LineItem("biscuits", 5.00, 5));
