@@ -11,49 +11,47 @@ public class OrderReceipt {
     }
 
     public String printReceipt() {
-        StringBuilder output = new StringBuilder();
-
-        printHeaders(output);
-
-        printOrderCreatedDateInfo(output);
-
-        printLineItems(output);
-
-        printTotalSalesTax(output);
-
-        printTotalDiscount(output);
-
-        printTotalAmount(output);
-
-        return output.toString();
+        return generateHeaders()
+                .append(generateOrderCreatedDateInfo())
+                .append(generateLineItems())
+                .append(generateTotalSalesTax())
+                .append(generateTotalDiscount())
+                .append(generateTotalAmount())
+                .toString();
     }
 
-    private void printLineItems(StringBuilder output) {
-        for (LineItem lineItem : order.getLineItems()) {
-            output.append(lineItem);
-        }
-        output.append(HYPHEN_LINE_SPACING);
+    private StringBuilder generateLineItems() {
+        StringBuilder builder = new StringBuilder();
+        order.getLineItems().forEach(builder::append);
+        builder.append(HYPHEN_LINE_SPACING);
+        return builder;
     }
 
-    private void printTotalDiscount(StringBuilder output) {
+    private StringBuilder generateTotalDiscount() {
+        StringBuilder builder = new StringBuilder();
         if (order.isDiscounted()) {
-            output.append(String.format(TOTAL_DISCOUNT_FORMATTER, order.getDiscount()));
+            builder.append(String.format(TOTAL_DISCOUNT_FORMATTER, order.getDiscount()));
         }
+        return builder;
     }
 
-    private void printTotalAmount(StringBuilder output) {
-        output.append(String.format(TOTAL_AMOUNT_FORMATTER, order.getTotalAmount()));
+    private StringBuilder generateTotalAmount() {
+        return new StringBuilder()
+                .append(String.format(TOTAL_AMOUNT_FORMATTER, order.getTotalAmount()));
     }
 
-    private void printTotalSalesTax(StringBuilder output) {
-        output.append(String.format(TOTAL_SALES_TAX_FORMATTER, order.getTotalSalesTax()));
+    private StringBuilder generateTotalSalesTax() {
+        return new StringBuilder()
+                .append(String.format(TOTAL_SALES_TAX_FORMATTER, order.getTotalSalesTax()));
     }
 
-    private void printOrderCreatedDateInfo(StringBuilder output) {
-        output.append(order.getCreatedDate().format(ORDER_CREATED_DATE_FORMATTER)).append(BLANK_LINE_SPACING);
+    private StringBuilder generateOrderCreatedDateInfo() {
+        return new StringBuilder()
+                .append(order.getCreatedDate().format(ORDER_CREATED_DATE_FORMATTER))
+                .append(BLANK_LINE_SPACING);
     }
 
-    private void printHeaders(StringBuilder output) {
-        output.append(ORDERS_HEADERS).append(BLANK_LINE_SPACING);
+    private StringBuilder generateHeaders() {
+        return new StringBuilder().append(ORDERS_HEADERS).append(BLANK_LINE_SPACING);
     }
 }
