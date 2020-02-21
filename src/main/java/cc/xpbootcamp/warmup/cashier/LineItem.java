@@ -1,7 +1,7 @@
 package cc.xpbootcamp.warmup.cashier;
 
-import static cc.xpbootcamp.warmup.cashier.constant.CalculateRateConstant.TAX_RATE;
 import static cc.xpbootcamp.warmup.cashier.constant.OrderReceiptStyleConstant.LINE_ITEM_FORMATTER;
+import static cc.xpbootcamp.warmup.cashier.constant.RateConstant.TAX_RATE;
 
 public class LineItem {
 

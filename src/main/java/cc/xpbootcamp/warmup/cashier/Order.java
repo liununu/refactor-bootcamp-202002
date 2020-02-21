@@ -3,7 +3,7 @@ package cc.xpbootcamp.warmup.cashier;
 import java.time.LocalDate;
 import java.util.List;
 
-import static cc.xpbootcamp.warmup.cashier.constant.CalculateRateConstant.WEDNESDAY_DISCOUNT_RATE;
+import static cc.xpbootcamp.warmup.cashier.constant.RateConstant.WEDNESDAY_DISCOUNT_RATE;
 import static java.time.DayOfWeek.WEDNESDAY;
 
 public class Order {
