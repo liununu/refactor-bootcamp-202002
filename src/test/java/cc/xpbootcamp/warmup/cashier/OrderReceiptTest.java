@@ -2,7 +2,7 @@ package cc.xpbootcamp.warmup.cashier;
 
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -44,19 +44,19 @@ class OrderReceiptTest {
     }
 
     @Test
-    void shouldPrintTodayDateInfo() {
+    void shouldPrintOrderCreatedDateInfo() {
         OrderReceipt receipt = new OrderReceipt(new Order(emptyList()));
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy年M月dd日,E", Locale.CHINA);
 
         String output = receipt.printReceipt();
 
-        assertThat(output, containsString(String.format("%s\n", LocalDateTime.now().format(formatter))));
+        assertThat(output, containsString(String.format("%s\n", LocalDate.now().format(formatter))));
     }
 
     @Test
-    void shouldPrintBlankLineSpacingBetweenHeaderAndTodayDateInfo() {
+    void shouldPrintBlankLineSpacingBetweenHeaderAndOrderCreatedDateInfo() {
         OrderReceipt receipt = new OrderReceipt(new Order(emptyList()));
-        LocalDateTime now = LocalDateTime.now();
+        LocalDate now = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy年M月dd日,E", Locale.CHINA);
 
         String output = receipt.printReceipt();
@@ -71,11 +71,11 @@ class OrderReceiptTest {
     }
 
     @Test
-    void shouldPrintBlankLineSpacingBetweenTodayDateInfoAndListItemInfo() {
+    void shouldPrintBlankLineSpacingBetweenOrderCreatedDateInfoAndListItemInfo() {
         OrderReceipt receipt = new OrderReceipt(
                 new Order(singletonList(new LineItem("巧克力", 21.50, 2)))
         );
-        LocalDateTime now = LocalDateTime.now();
+        LocalDate now = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy年M月dd日,E", Locale.CHINA);
 
         String output = receipt.printReceipt();

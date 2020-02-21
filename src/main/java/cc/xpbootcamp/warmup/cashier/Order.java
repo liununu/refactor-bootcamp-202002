@@ -1,6 +1,6 @@
 package cc.xpbootcamp.warmup.cashier;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 import static cc.xpbootcamp.warmup.cashier.constant.CalculateRateConstant.WEDNESDAY_DISCOUNT_RATE;
@@ -10,9 +10,15 @@ public class Order {
 
     private static final int NO_DISCOUNT = 0;
     private List<LineItem> lineItems;
+    private LocalDate createdDate;
 
     public Order(List<LineItem> lineItems) {
         this.lineItems = lineItems;
+        this.createdDate = LocalDate.now();
+    }
+
+    public LocalDate getCreatedDate() {
+        return createdDate;
     }
 
     public List<LineItem> getLineItems() {
@@ -50,6 +56,6 @@ public class Order {
     }
 
     private boolean isTodayWednesday() {
-        return LocalDateTime.now().getDayOfWeek() == WEDNESDAY;
+        return createdDate.getDayOfWeek() == WEDNESDAY;
     }
 }

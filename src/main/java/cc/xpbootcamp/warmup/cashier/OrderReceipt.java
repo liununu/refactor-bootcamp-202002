@@ -1,7 +1,5 @@
 package cc.xpbootcamp.warmup.cashier;
 
-import java.time.LocalDateTime;
-
 import static cc.xpbootcamp.warmup.cashier.constant.OrderReceiptStyleConstant.*;
 
 public class OrderReceipt {
@@ -17,7 +15,7 @@ public class OrderReceipt {
 
         printHeaders(output);
 
-        printTodayDateInfo(output);
+        printOrderCreatedDateInfo(output);
 
         printLineItems(output);
 
@@ -51,8 +49,8 @@ public class OrderReceipt {
         output.append(String.format(TOTAL_SALES_TAX_FORMATTER, order.getTotalSalesTax()));
     }
 
-    private void printTodayDateInfo(StringBuilder output) {
-        output.append(LocalDateTime.now().format(TODAY_DATE_FORMATTER)).append(BLANK_LINE_SPACING);
+    private void printOrderCreatedDateInfo(StringBuilder output) {
+        output.append(order.getCreatedDate().format(ORDER_CREATED_DATE_FORMATTER)).append(BLANK_LINE_SPACING);
     }
 
     private void printHeaders(StringBuilder output) {

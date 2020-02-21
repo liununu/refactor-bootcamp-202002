@@ -5,7 +5,7 @@ import mockit.MockUp;
 
 import java.time.Clock;
 import java.time.Instant;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.time.ZoneId;
 
 public class MockLocalDateTime {
@@ -23,10 +23,10 @@ public class MockLocalDateTime {
     }
 
     private static void mockLocalDateTime(Clock clock) {
-        new MockUp<LocalDateTime>() {
+        new MockUp<LocalDate>() {
             @Mock
-            public LocalDateTime now() {
-                return LocalDateTime.now(clock);
+            public LocalDate now() {
+                return LocalDate.now(clock);
             }
         };
     }
