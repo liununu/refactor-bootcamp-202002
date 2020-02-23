@@ -1,8 +1,18 @@
 package cc.xpbootcamp.warmup.cashier;
 
-import static cc.xpbootcamp.warmup.cashier.constant.OrderReceiptStyleConstant.*;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 public class OrderReceipt {
+
+    private static final String ORDERS_HEADERS = "===== 老王超市,值得信赖 ======\n";
+    private static final String BLANK_LINE_SPACING = "\n";
+    private static final DateTimeFormatter ORDER_CREATED_DATE_FORMATTER =
+            DateTimeFormatter.ofPattern("yyyy年M月dd日,E\n", Locale.CHINA);
+    private static final String HYPHEN_LINE_SPACING = "-----------------------------------\n";
+    private static final String TOTAL_SALES_TAX_FORMATTER = "税额: %.2f\n";
+    private static final String TOTAL_DISCOUNT_FORMATTER = "折扣: %.2f\n";
+    private static final String TOTAL_AMOUNT_FORMATTER = "总价: %.2f\n";
 
     private Order order;
 

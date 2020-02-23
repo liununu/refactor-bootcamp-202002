@@ -1,9 +1,9 @@
 package cc.xpbootcamp.warmup.cashier;
 
-import static cc.xpbootcamp.warmup.cashier.constant.OrderReceiptStyleConstant.LINE_ITEM_FORMATTER;
-import static cc.xpbootcamp.warmup.cashier.constant.RateConstant.TAX_RATE;
-
 public class LineItem {
+
+    private static final String LINE_ITEM_FORMATTER = "%s, %.2f x %d, %.2f\n";
+    private static final double TAX_RATE = .10;
 
     private String description;
     private double price;
